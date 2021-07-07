@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Marius' Homepage</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js">
+    function clearPage(elementID)
+    {
+        document.getElementById().innerHTML = "";
+    }
+    </script>
+
+    <style>
+    .responsive {
+        width: auto;
+        height: auto;
+        max-height: 800px;
+    }
+    </style>
+</head>
+
+<body>
+    <form>
+        <input type="button" id="btn" value="Get doge" />
+    </form>
+    <div id="dogdiv" class="reponsive">
+        <img id='img' src='' class="responsive"/>
+        <video id='vid' class="responsive" autoplay loop>
+            <source src='' type="video/mp4">    
+        </video>
+    </div>
+
+    <script type="text/javascript">
+
+        document.getElementById('btn').onclick = function() {    
+            $.getJSON('https://random.dog/woof.json', function(data){
+                var url = data.url;
+                if(url.match(".mp4")){
+                    img = document.getElementById('img');
+                    img.src="";
+                    vid = document.getElementById('vid');
+                    vid.src=url;
+                }
+                else {
+                vid = document.getElementById('vid');
+                vid.src="";
+                img = document.getElementById('img');
+                img.src = url;
+                };
+            });
+        }
+
+        function getURL(json) {
+            var url = json.url;
+            return url;
+        };
+    </script>
+    
+</body>
+</html>
